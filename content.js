@@ -1,5 +1,5 @@
-"option strict";
-function getJSON(){
+'use strict';
+function getJSON() {
     const pElements = document.getElementsByTagName("p")
     let body
     let toReturn
@@ -11,6 +11,7 @@ function getJSON(){
          body: body
         })
     console.log(toReturn)
+    return toReturn
 }
 //function generateArticles(title){//Title could be switched with a keyword list from the title/article
   //  var url = "https://newsapi.org/v2/everything?q=" + title + "&apiKey=d943dcac77304701987917fb319681d9"
