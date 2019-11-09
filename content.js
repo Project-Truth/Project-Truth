@@ -14,10 +14,10 @@ function getJSON() {
     return toReturn
 }
 function compare(body, body2){
-    var orig = body.split(" ")
-    var comp = body2.split(" ")
-    for (var i = 0; i <orig.length; i++){
-        for (var j = 0; j<i; j++){
+    let orig = body.split(" ")
+    let comp = body2.split(" ")
+    for (let i = 0; i <orig.length; i++){
+        for (let j = 0; j<i; j++){
             if(orig[i] == orig[j]){
                 orig.splice(i,1)
             }
@@ -25,23 +25,23 @@ function compare(body, body2){
 
     }
 
-    for (var i = 0; i <comp.length; i++){
-        for (var j = 0; j<i; j++){
+    for (let i = 0; i <comp.length; i++){
+        for (let j = 0; j<i; j++){
             if(comp[i] == comp[j]){
                 orig.splice(i,1)
             }
         }
 
     }
-    var percent = getPercent(orig, comp)
+    let percent = getPercent(orig, comp)
     return percent
 }    
 
 function getPercent(orig, comp){
     orig.concat(comp)
-    var points = 0
-    for (var i = 0; i <orig.length; i++){
-        for (var j = 0; j<i; j++){
+    let points = 0
+    for (let i = 0; i <orig.length; i++){
+        for (let j = 0; j<i; j++){
             if(orig[i] == orig[j]){
                 points ++;
                 orig.splice(i,1)
