@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Project-Truth",
+    "version": "0.1",
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": ["PUT JQUERY IN HERE", "content.js"]
+      }
+    ],
+    "browser_action": {
+        "default_icon": {                    
+          "32": "images/icon32.png"            
+        },
+        "default_title": "Project-Truth",            
+      }
+  }
