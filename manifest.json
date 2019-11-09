@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Project-Truth",
+    "name": "TruthTortoise",
     "version": "0.1",
     "content_scripts": [
       {
@@ -16,6 +16,6 @@
         "default_icon": {                    
           "32": "32.png"            
         },
-        "default_title": "Project-Truth"           
+        "default_title": "Truth Tortoise"           
       }
   }
