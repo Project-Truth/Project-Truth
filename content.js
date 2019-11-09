@@ -13,8 +13,13 @@ function getJSON() {
     console.log(toReturn)
     return toReturn
 }
-function compare(body, body2){
-    let orig = body.split(" ")
+
+function conJSON(jason){
+    let temp = JSON.stringify(jason)
+    return temp['body'] 
+}
+function compare(body2){
+    let orig = conJSON(getJSON()).split(" ")
     let comp = body2.split(" ")
     for (let i = 0; i <orig.length; i++){
         for (let j = 0; j<i; j++){
