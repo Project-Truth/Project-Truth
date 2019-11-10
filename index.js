@@ -6,8 +6,8 @@ function getQuery()
 }
 async function query(url)
 {
-    var html = await fetch(url).body
-    .then return query
+    var html = await fetch(url).text()
+    return html
 }
 
 
@@ -17,24 +17,22 @@ async function query(url)
   async function findRelevantArticles(htmlQuery){//title can be switched with keywords 
     var title = (convertHTMLtoJSON(htmlQuery))['header'] // JSON.parsed
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
-    let bigJason = await fetch(queryURL).body
-    .then {
+    let bigJason = await fetch(queryURL).json()
     var relevantLinks
     for (let i = 0; i< 5;i++){
         relevantLinks+= bigJason['articles'][i]['url']
     }
     return relevantLinks
     }
-  }
+  
 async function nextPage(){
     let newQuery = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&page=2&apiKey=d943dcac77304701987917fb319681d9'
-    let largeJason = await fetch(newQuery).body
-    .then {
+    let largeJason = await fetch(newQuery).json()
     for (let i = 0; i< 5;i++){
         nextLinks+= largeJason['articles'][i]['url']
 }
     }
-}
+
 function conJSON(jason){
     let temp = JSON.parse(jason)
     return temp['body'] 
@@ -97,8 +95,7 @@ async function finalPercentage(){
     var amtSkipped = 0
     
     for (let i = 0; i<articleLinks.length; i++){
-        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks[i]).body()))
-        .then {
+        let tempJSON = await fetch(articleLinks[i]).json()
         let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
@@ -107,19 +104,18 @@ async function finalPercentage(){
             sum+=tempPercent
         }      
     }
-    }
+    
 
     if (amtSkipped>0){
         var secondPage = nextPage()
     }
     while (amtSkipped >0){
-        let tempSkipJSON = JSON.parse(convertHTMLtoJSON(await fetch(secondPage(amtSkipped-1)).body))
-        .then{
+        let tempSkipJSON = await fetch(secondPage(amtSkipped-1)).json()
         sum+= compare(tempSkipJSON['body'])
         
         amtSkipped --
     }
-}
+
     var finalScore = sum/5
     finalScore = finalScore*100
     alert( "finalScore:" +finalScore)
