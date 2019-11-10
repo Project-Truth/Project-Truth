@@ -14,6 +14,16 @@
     });
   });   
 
+ var json;
+
+    document.addEventListener('DOMContentLoaded',
+    function onclick() {
+        chrome.runtime.sendMessage({greeting: "getJson"}, function(returned){
+         json = returned})
+    }
+    ,false)
+
+
 
    
   function findRelevantArticles(){//title can be switched with keywords 
@@ -73,7 +83,6 @@ chrome.runtime.onMessage.addListener( function(request,sender,sendResponse))
 {
     if( request.greeting === "getPercentage" )
     {
-            sendResponse( {navURL:finalPercent} );
+            sendResponse( {finalPercent()} );
     }        
     }
-
