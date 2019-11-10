@@ -59,7 +59,6 @@ function compare(body2){
         }
 
     }
-
     for (let i = 0; i <comp.length; i++){
         for (let j = 0; j<i; j++){
             if(comp[i] == comp[j]){
