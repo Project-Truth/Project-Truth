@@ -18,7 +18,7 @@
        "default_icon": {                    
           "32": "32.png"            
         },
-        "default_title": "Project-Truth" 
+        "default_title": "Truth Tortoise" 
    },
     //creates an options page in brower extensions
     "options_page": "options.html",
