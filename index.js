@@ -18,7 +18,7 @@ async function query(url)
   async function findRelevantArticles(htmlQuery){//title can be switched with keywords 
     var title = (convertHTMLtoJSON(htmlQuery))['header'] // JSON.parsed
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
-    let bigJason = await fetch(queryURL).json()
+    let bigJason = await fetch(queryURL).json
     var relevantLinks
     for (let i = 0; i< 5;i++){
         relevantLinks+= bigJason['articles'][i]['url']
@@ -28,7 +28,7 @@ async function query(url)
   
 async function nextPage(){
     let newQuery = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&page=2&apiKey=d943dcac77304701987917fb319681d9'
-    let largeJason = await fetch(newQuery).json()
+    let largeJason = await fetch(newQuery).json
     for (let i = 0; i< 5;i++){
         nextLinks+= largeJason['articles'][i]['url']
 }
@@ -92,7 +92,7 @@ async function finalPercentage(){
     var amtSkipped = 0
     
     for (let i = 0; i<articleLinks.length; i++){
-        let tempJSON = await fetch(articleLinks[i]).json()
+        let tempJSON = await fetch(articleLinks[i]).json
         let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
@@ -107,7 +107,7 @@ async function finalPercentage(){
         var secondPage = nextPage()
     }
     while (amtSkipped >0){
-        let tempSkipJSON = await fetch(secondPage(amtSkipped-1)).json()
+        let tempSkipJSON = await fetch(secondPage(amtSkipped-1)).json
         sum+= compare(tempSkipJSON['body'])
         
         amtSkipped --
