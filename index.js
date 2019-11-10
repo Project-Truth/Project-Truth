@@ -71,7 +71,7 @@ function getPercent(orig, comp){
         }
     }
     return points/orig.length
-}}
+}
 function convertHTMLtoJSON(input){
     const pElements = document.getElementById('p')
     let body
