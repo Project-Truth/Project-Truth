@@ -17,8 +17,8 @@
  var json;
 
     document.addEventListener('DOMContentLoaded',
-    function onclick() {
-        chrome.runtime.sendMessage({greeting: "getJson"}, function(returned){
+    async function onclick() {
+        chrome.runtime.sendMessage({greeting: "getJSON"}, function(returned){
          json = returned})
     }
     ,false)
