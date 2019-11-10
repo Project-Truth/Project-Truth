@@ -1,7 +1,7 @@
 //jon ur dumb
 function getQuery()
 {
-    var query = document.getElementById('myText')
+    var query = document.getElementById('myText') + ""
     query = query.splice(0,query.indexOf("http"))    
     return query.value
 }
