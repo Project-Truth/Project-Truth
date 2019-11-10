@@ -130,16 +130,17 @@ async function finalPercentage(){
     }
     var finalScore = sum/5
     finalScore = finalScore*100
-    
+    alert("finalScore:" +finalScore)
     return finalScore
 }
 
 chrome.runtime.onMessage.addListener( function (request,sender,sendResponse)
 {
-    if( request.greeting === "getPercentage" )
+    if( request.greeting === "getP" )
     {
-        Promise.all([finalPercentage]).then((v) =>
+        Promise.all([finalPercentage()]).then((v) =>
         {
+            alert("finalPercentage:" +v)
             sendResponse({data : v});
         })
     }        
