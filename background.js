@@ -108,14 +108,14 @@ async function finalPercentage(){
     var amtSkipped = 0
     var usedArticles
     
-    for (let i = 0; i<articles['articles'].length; i++){
-        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks(i))))
+    for (let i = 0; i<articleLinks.length; i++){
+        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks[i])))
         let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
         }
         else{
-            usedArticles += articles['articles'][i]
+            usedArticles += articleLinks[i]
             sum+=tempPercent
         }      
     }
@@ -126,7 +126,7 @@ async function finalPercentage(){
     while (amtSkipped >0){
         let tempSkipJSON = JSON.parse(convertHTMLtoJSON(await fetch(secondPage(amtSkipped-1))))
         sum+= compare(tempSkipJSON['body'])
-        usedArticles += (secondPage(amtSkipped))
+        usedArticles += (secondPage[amtSkipped])
         amtSkipped --
     }
     var finalScore = sum/5
