@@ -6,7 +6,7 @@ function getQuery()
     var query = document.getElementByID("myText.value")
     return query
 }
-async query(url)
+async function query(url)
 {
     var html = await fetch(url)
     return query
