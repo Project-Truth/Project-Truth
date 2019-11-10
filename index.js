@@ -88,7 +88,7 @@ function convertHTMLtoJSON(input){
 async function finalPercentage(){ 
     
             
-    var articleLinks = findRelevantArticles()
+    var articleLinks = findRelevantArticles(query(getQuery()))
     
     var sum = 0;
     var amtSkipped = 0
