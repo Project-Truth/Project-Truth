@@ -10,16 +10,18 @@
         //repeatedly check or no
         "persistent": false
     },
-    //gives permission (chrome apis)
-    "permissions":["storage"],
+    //gives permission to.... (chrome apis)
+    "permissions":["activeTab", "storage", "declarativeContent"],
     
-   "page_action":{
+   "browser_action":{
        "default_popup": "popup.html",
        "default_icon": {                    
           "32": "32.png"            
         },
         "default_title": "Project-Truth" 
    },
+    //creates an options page in brower extensions
+    "options_page": "options.html",
     
     //matt shit
     "content_scripts": [
