@@ -1,6 +1,6 @@
  chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.sync.set({color: '#3aa757'}, function() {
-      console.log("The color is green.");
+      console.log("OPened");
     });
 
      chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
@@ -14,15 +14,17 @@
     });
   });   
 
- var json;
-
+ 
+  async function getJason(){
+      let json;
     document.addEventListener('DOMContentLoaded',
-    async function pageOpen(){
-        chrome.runtime.sendMessage({greeting: "getJSON"}, function(returned){
-         json = returned})
+     function pageOpen(){
+        chrome.runtime.sendMessage({greeting: "getJSON"}, function(response){
+         json = response.sent})
     }
     ,false)
-
+    return json;
+  }
 
 
    
@@ -132,7 +134,7 @@ async function finalPercentage(){
     return finalScore
 }
 
-chrome.runtime.onMessage.addListener( function y (request,sender,sendResponse)
+chrome.runtime.onMessage.addListener( function (request,sender,sendResponse)
 {
     if( request.greeting === "getPercentage" )
     {
