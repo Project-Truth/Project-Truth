@@ -1,35 +1,39 @@
- chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({color: '#3aa757'}, function() {
-      console.log("OPened");
-    });
+  
+//  chrome.runtime.onInstalled.addListener(function() {
+//     chrome.storage.sync.set({color: '#3aa757'}, function() {
+//       console.log("OPened");
+//     });
 
-     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-      chrome.declarativeContent.onPageChanged.addRules([{
-        conditions: [new chrome.declarativeContent.PageStateMatcher({
-          pageUrl: {hostEquals: 'developer.chrome.com'},
-        })
-        ],
-            actions: [new chrome.declarativeContent.ShowPageAction()]
-      }]);
-    });
-  });   
+//      chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+//       chrome.declarativeContent.onPageChanged.addRules([{
+//         conditions: [new chrome.declarativeContent.PageStateMatcher({
+//           pageUrl: {hostEquals: 'developer.chrome.com'},
+//         })
+//         ],
+//             actions: [new chrome.declarativeContent.ShowPageAction()]
+//       }]);
+//     });
+//   });   
 
  
    function getJSON(){
+       alert("getJason has been called to ")
       let json;
-    document.addEventListener('DOMContentLoaded',
+        document.addEventListener('DOMContentLoaded',
      function pageOpen(){
         chrome.runtime.sendMessage({greeting: "getJSON"}, function(response){
          json = response.sent})
+         alert("JSON FROM BACKGROUND:" +json)
     }
     ,false)
     return json;
+
   }
 
 
    
   async function findRelevantArticles(){//title can be switched with keywords 
-    let title = JSON.parse(getJSON())
+    let title = (getJSON()) // JSON.parsed
     alert(title)
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
     let bigJason = await fetch(queryURL)
@@ -96,12 +100,14 @@ function convertHTMLtoJSON(input){
         header: header,
         body: body
     })
-    console.log(toReturn)
+    
     return toReturn
 }
 
-async function finalPercentage(){
+async function finalPercentage(){ 
+    alert("finalPercentage has been called to ")
     var currentPage = getJSON()
+    alert("From in FinalPercentage" +currentPage)
     var articleLinks = findRelevantArticles()
     
     var sum = 0;
@@ -131,7 +137,7 @@ async function finalPercentage(){
     }
     var finalScore = sum/5
     finalScore = finalScore*100
-    alert("finalScore:" +finalScore)
+    alert( "finalScore:" +finalScore)
     return finalScore
 }
 
