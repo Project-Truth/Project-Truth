@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener( function(request,sender,sendResponse)
         "from the extension");
     if( request.greeting === "getJSON" )
     {
-           await sendResponse( {sent : getJSON()} );
+            sendResponse( {sent : getJSON()} );
     }        
     })
 
