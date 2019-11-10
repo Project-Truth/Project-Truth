@@ -67,7 +67,7 @@ function compare(body2){
 }    
 
 function getPercent(orig, comp){
-    orig.concat(comp)
+    orig = orig.concat(comp)
     let points = 0
     for (let i = 0; i <orig.length; i++){
         for (let j = 0; j<i; j++){
@@ -76,8 +76,34 @@ function getPercent(orig, comp){
                 orig.splice(i,1)
             }
         }
+    }
     return points/orig.length
 }}
+function finalPercentage(){
+    var currentPage = getJSON()
+    var articles = findRelevantArticles()
+    var sum = 0;
+    var amtSkipped = 0
+    for (let i = 0; i<articles['articles'].length; i++){
+        let tempPercent = compare(articles['articles'][i])//watch out for duplicates
+        if (tempPercent > .85){
+            amtSkipped ++;
+        }
+        else{
+            sum+=tempPercent
+        }      
+    }
+    if (amtSkipped>0){
+    var secondPage = nextPage()
+    }
+    while (amtSkipped >0){
+        sum+= compare(secondPage['articles'][amtSkipped-1])
+        amtSkipped--
+    }
+    var finalScore = sum/5
+    finalScore = finalScore*100
+    return finalScore
+}
 
 chrome.runtime.onMessage.addListener( function(request,sender,sendResponse))
 {
