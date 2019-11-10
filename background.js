@@ -136,6 +136,6 @@ chrome.runtime.onMessage.addListener( function y (request,sender,sendResponse)
 {
     if( request.greeting === "getPercentage" )
     {
-            sendResponse( {finalPercent()} );
+            sendResponse({ finalPercentage()});
     }        
     })
