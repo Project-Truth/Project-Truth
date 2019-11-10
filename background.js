@@ -140,7 +140,7 @@ chrome.runtime.onMessage.addListener( function (request,sender,sendResponse)
     {
         Promise.all([finalPercentage]).then((v) =>
         {
-            sendResponse({v});
+            sendResponse({data : v});
         })
     }        
     })
