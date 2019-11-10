@@ -2,7 +2,7 @@
 function getQuery()
 {
     var query = document.getElementById('myText')
-    alert(query.value)
+    query = query.splice(0,query.indexOf("http"))    
     return query.value
 }
 async function query(url)
