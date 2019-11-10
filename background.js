@@ -45,7 +45,7 @@ function compare(body2){
 }    
 
 function getPercent(orig, comp){
-    orig.concat(comp)
+    orig = orig.concat(comp)
     let points = 0
     for (let i = 0; i <orig.length; i++){
         for (let j = 0; j<i; j++){
@@ -54,6 +54,7 @@ function getPercent(orig, comp){
                 orig.splice(i,1)
             }
         }
+    }
     return points/orig.length
 }
 
