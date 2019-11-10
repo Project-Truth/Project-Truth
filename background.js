@@ -132,10 +132,10 @@ async function finalPercentage(){
     return finalScore
 }
 
-chrome.runtime.onMessage.addListener( function(request,sender,sendResponse))
+chrome.runtime.onMessage.addListener( function y (request,sender,sendResponse)
 {
     if( request.greeting === "getPercentage" )
     {
             sendResponse( {finalPercent()} );
     }        
-    }
+    })
