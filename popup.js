@@ -1,5 +1,5 @@
 //alert("Popup running")
-document.addEventListener('DOMContentLoaded',async function localFunc(){
+//document.addEventListener('DOMContentLoaded',async function localFunc(){
 document.querySelector('button').addEventListener('click',onclick, false)
  async function onclick() {
     chrome.runtime.sendMessage({greeting: "getP"}, function(returned){
@@ -7,4 +7,4 @@ document.querySelector('button').addEventListener('click',onclick, false)
      })
 }
 
-},false)
+//},false)
