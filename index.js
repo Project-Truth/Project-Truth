@@ -1,6 +1,4 @@
 //jon ur dumb
-var btn = document.querySelector('button')
-
 function getQuery()
 {
     var query = document.getElementByID("myText.value")
@@ -120,7 +118,5 @@ async function finalPercentage(){
     alert( "finalScore:" +finalScore)
     return finalScore
 }
-document.getElementByID('button').onClick = "finalPercentage();"{
-    console.log("click")
-    document.getElementById('p').innerHTML = finalPercentage()
-}
+document.getElementById('button').addEventListener('click', finalPercentage);
+document.getElementById('p').innerHTML = finalPercentage()
