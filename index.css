@@ -1,5 +1,21 @@
 
+#big-ass-div{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50%;
+    width: 75%;
+    background-color: #B3EFB2;
+    overflow: hidden;
+    align-content: center;
+    border-radius: 50px;
+    border: solid;
+    border-width: 15px;
+    border-color: #719971;
+}
+
 img{
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
     width: 600px;
@@ -7,18 +23,19 @@ img{
 }
 input{
     width: 40%;
-    height: 4%;
-    margin-top: 30px;
+    height: 35px;
+    margin-top: 50px;
     font-size: 20px;
+    color:dimgray;
     
 }
 button{
    margin-left: auto;   
     margin-right: auto;
     
-     margin-top: 40px;
-    min-width: 180px;
-    min-height: 40px;
+     margin-top:35px;
+    min-width: 10px;
+    min-height: 50px;
     background-color: #7A9E7E;
     
     border: none;
@@ -26,7 +43,7 @@ button{
     color: #DCE8E4;
   
     box-shadow: 0 6px #DCE8E4;
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Slabo 27px', serif;
     transition: box-shadow .2s linear; 
     transition: transform .3s linear;
@@ -46,11 +63,14 @@ button:active{
 }
 
 p{
-    margin-top: 25px;
-    font-size: 30px;
+    visibility: hidden;
+    
+    margin-top: 180px;
+    font-size: 160px;
 }
 
 body{
+   
     width: 1000px;
     height: 1000px;
     padding: 40px;
