@@ -21,19 +21,22 @@
    
   async function findRelevantArticles(){//title can be switched with keywords 
     let title = (getJSON()) // JSON.parsed
-    alert(title)
+    alert("getJSON9 @bgjs;24:" + title)
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
     let bigJason = await fetch(queryURL)
+    alert("Big Jason:" + bigJason)
     var relevantLinks
-    for (let i = 0; i< 5;i++){
+    for (let i = 0; i < 5;i++){
         relevantLinks+= bigJason['articles'][i]['url']
     }
     return relevantLinks
 
-  }
+}
+
+
 async function nextPage(){
     let newQuery = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&page=2&apiKey=d943dcac77304701987917fb319681d9'
-    let largeJason = await fetch(newQuery)
+    let largeJason = JSON.stringify(await fetch(newQuery))
     for (let i = 0; i< 5;i++){
         nextLinks+= largeJason['articles'][i]['url']
 }
@@ -141,7 +144,7 @@ function getJSON(){
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.sendMessage(tabs[0].id, {greeting: "getJ"}, function(response) {
-          return response.sent;
+           return response.sent;
         });
       });
     

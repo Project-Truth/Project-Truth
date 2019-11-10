@@ -17,13 +17,10 @@
 
 chrome.runtime.onMessage.addListener(function(request,sender,sendResponse)
 {
-    alert("content.js has been called")
-    console.log(sender.tab ?
-        "from a content script:" + sender.tab.url :
-        "from the extension");
-    if( request.greeting === "getJ" )
+    alert("request Content:" + request.greeting)
+    if( request.greeting == "getJ" )
     {
-          sendResponse( {sent :getJSON()} );
+          sendResponse( {sent : getJSON() } );
     }        
     })
 
