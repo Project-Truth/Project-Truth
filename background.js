@@ -29,7 +29,8 @@
 
    
   async function findRelevantArticles(){//title can be switched with keywords 
-    let title = JSON.parse(getJSON())['head']
+    let title = JSON.parse(getJSON())
+    alert(title)
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
     let bigJason = await fetch(queryURL)
     var relevantLinks
