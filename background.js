@@ -123,8 +123,8 @@ async function finalPercentage(){
     while (amtSkipped >0){
         let tempSkipJSON = JSON.parse(convertHTMLtoJSON(await fetch(secondPage(amtSkipped-1))))
         sum+= compare(tempSkipJSON['body'])
-        usedArticles += (secondPage(amtSkipped)
-        amtSkipped -= 1
+        usedArticles += (secondPage(amtSkipped))
+        amtSkipped --
     }
     var finalScore = sum/5
     finalScore = finalScore*100
