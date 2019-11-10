@@ -6,7 +6,7 @@ function getQuery()
 }
 async function query(url)
 {
-    var html = await fetch(url).text()
+    var html = await fetch(url).body()
     return html
 }
 
