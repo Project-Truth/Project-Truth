@@ -57,7 +57,6 @@ function compare(body2){
                 orig.splice(i,1)
             }
         }
-
     }
     for (let i = 0; i <comp.length; i++){
         for (let j = 0; j<i; j++){
@@ -107,7 +106,7 @@ async function finalPercentage(){
     var usedArticles
     
     for (let i = 0; i<articles['articles'].length; i++){
-        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks(i)))
+        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks(i))))
         let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
