@@ -6,10 +6,15 @@
    
   function findRelevantArticles(){//title can be switched with keywords 
     let title = JSON.parse(getJSON())['head']
-    let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9'; 
+    let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
     let bigJason = fetch(queryURL)
     return bigJason
   }
+function nextPage(){
+    let newQuery = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&page=2&apiKey=d943dcac77304701987917fb319681d9'
+    let largeJason = fetch(newQuery)
+    return largeJason
+}
 
 function conJSON(jason){
     let temp = JSON.stringify(jason)
