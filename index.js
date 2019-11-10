@@ -120,7 +120,7 @@ async function finalPercentage(){
     alert( "finalScore:" +finalScore)
     return finalScore
 }
-btn.onClick(function(){
+btn.onClick = finalPercentage(){
     console.log("click")
     document.getElementById('p').innerHTML = finalPercentage()
 })
