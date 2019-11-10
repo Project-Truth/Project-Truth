@@ -1,4 +1,4 @@
-0//jon ur dumb
+//jon ur dumb
 var btn = document.querySelector('button')
 
 function getQuery()
@@ -120,7 +120,7 @@ async function finalPercentage(){
     alert( "finalScore:" +finalScore)
     return finalScore
 }
-button.onClick = function(){
+btn.onClick(function(){
     console.log("click")
     document.getElementById('p').innerHTML = finalPercentage()
-}
+})
