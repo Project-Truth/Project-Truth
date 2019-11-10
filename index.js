@@ -1,7 +1,7 @@
 //jon ur dumb
 function getQuery()
 {
-    var query = document.getElementByID("myText")
+    var query = document.getElementById('myText')
     return query.value
 }
 async function query(url)
