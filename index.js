@@ -94,7 +94,7 @@ async function finalPercentage(){
     var amtSkipped = 0
     
     for (let i = 0; i<articleLinks.length; i++){
-        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks[i])))
+        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks[i]).body()))
         let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
