@@ -13,10 +13,14 @@ head{
     
 }
 
+img {
 
-
+    margin: 0px;
+    width: 250px;
+    padding-top: 50px;
+}
 button{
-    margin-top: 55px;
+    margin-top: 40px;
     min-width: 180px;
     min-height: 40px;
     background-color: #7A9E7E;
