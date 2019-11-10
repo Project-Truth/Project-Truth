@@ -16,16 +16,22 @@
 
 
    
-  function findRelevantArticles(){//title can be switched with keywords 
+  async function findRelevantArticles(){//title can be switched with keywords 
     let title = JSON.parse(getJSON())['head']
     let queryURL = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&apiKey=d943dcac77304701987917fb319681d9' 
-    let bigJason = fetch(queryURL)
-    return bigJason
+    let bigJason = await fetch(queryURL)
+    var relevantLinks
+    for (let i = 0; i< 5;i++){
+        relevantLinks+= bigJason['articles'][i]['url']
+    }
+    return relevantLinks
+
   }
-function nextPage(){
+async function nextPage(){
     let newQuery = 'https://newsapi.org/v2/everything?q=' +title+'&sortBy=popularity&pageSize=5&page=2&apiKey=d943dcac77304701987917fb319681d9'
-    let largeJason = fetch(newQuery)
-    return largeJason
+    let largeJason = await fetch(newQuery)
+    for (let i = 0; i< 5;i++){
+        nextLinks+= largeJason['articles'][i]['url']
 }
 
 function conJSON(jason){
@@ -69,28 +75,54 @@ function getPercent(orig, comp){
     }
     return points/orig.length
 }}
-function finalPercentage(){
+function convertHTMLtoJSON(input){
+    const pElements = input.getElementTagByTagName("p")
+    let body
+    let toReturn 
+    for (e of pElements ){body+=e}
+    toReturn = JSON.stringify({
+        url: "none",
+        header: header,
+        body: body
+    })
+    console.log(toReturn)
+    return toReturn
+}
+
+async function finalPercentage(){
     var currentPage = getJSON()
-    var articles = findRelevantArticles()
+    var articleLinks = findRelevantArticles()
+    
     var sum = 0;
     var amtSkipped = 0
+    var usedArticles
+    
     for (let i = 0; i<articles['articles'].length; i++){
-        let tempPercent = compare(articles['articles'][i])//watch out for duplicates
+        let tempJSON = JSON.parse(convertHTMLtoJSON(await fetch(articleLinks(i)))
+        let tempPercent = compare(tempJSON['body'])//LOOOK AT THIS WHEN YOU GET BACK
         if (tempPercent > .85){
             amtSkipped ++;
         }
         else{
+            usedArticles += articles['articles'][i]
             sum+=tempPercent
         }      
     }
+
     if (amtSkipped>0){
-    var secondPage = nextPage()
+        var secondPage = nextPage()
     }
     while (amtSkipped >0){
-        sum+= compare(secondPage['articles'][amtSkipped-1])
+        let tempSkipJSON = JSON.parse(convertHTMLtoJSON(await fetch(secondPage(amtSkipped-1))))
+        sum+= compare(tempSkipJSON['body'])
+        usedArticles += (secondPage(amtSkipped)
         amtSkipped--
     }
     var finalScore = sum/5
     finalScore = finalScore*100
+    
     return finalScore
 }
+
+
+}    
