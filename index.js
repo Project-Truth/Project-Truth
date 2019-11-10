@@ -123,4 +123,4 @@ async function finalPercentage(){
 btn.onClick = finalPercentage(){
     console.log("click")
     document.getElementById('p').innerHTML = finalPercentage()
-})
+}
