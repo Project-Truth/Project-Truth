@@ -121,5 +121,6 @@ async function finalPercentage(){
     return finalScore
 }
 button.onClick = function(){
+    console.log("click")
     document.getElementById('p').innerHTML = finalPercentage()
 }
