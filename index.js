@@ -78,13 +78,9 @@ function convertHTMLtoJSON(input){
     let body
     let toReturn 
     for (e of pElements ){body+=e}
-    toReturn = JSON.stringify({
-        url: "none",
-        header: header,
-        body: body
-    })
+
     
-    return toReturn
+    return body
 }
 
 async function finalPercentage(){ 
