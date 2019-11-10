@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded',function (){
 document.querySelector('button').addEventListener('click', onclick, false)
 function onclick() {
-    chrome.runtime.sendMessage({greeting: "getPercentage"}, function(returned){
+    await chrome.runtime.sendMessage({greeting: "getPercentage"}, function(returned){
      alert(returned) })
 }
 if (amtSkipped>0){
