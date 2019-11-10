@@ -15,7 +15,7 @@
   });   
 
  
-  async function getJason(){
+   function getJSON(){
       let json;
     document.addEventListener('DOMContentLoaded',
      function pageOpen(){
