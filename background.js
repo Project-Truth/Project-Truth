@@ -2,9 +2,7 @@
     chrome.storage.sync.set({color: '#3aa757'}, function() {
       console.log("The color is green.");
     });
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
      chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
         conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -15,9 +13,8 @@
       }]);
     });
   });   
-=======
->>>>>>> Stashed changes
-  });
+
+
    
   function findRelevantArticles(){//title can be switched with keywords 
     let title = JSON.parse(getJSON())['head']
@@ -70,11 +67,4 @@ function getPercent(orig, comp){
             }
         }
     return points/orig.length
-}
-
-<<<<<<< Updated upstream
-  
-=======
-  
->>>>>>> master
->>>>>>> Stashed changes
+}}
