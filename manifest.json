@@ -4,14 +4,13 @@
     "version": "0.1",
     "description": "We bring the truth to YOU",
     
-    //runs in background when extension is up
+    
     "background":{
         "scripts":["background.js"],
-        //repeatedly check or no
-        "persistent": false
+        "run_at":"document_start"
     },
-    //gives permission to.... (chrome apis)
-    "permissions":["activeTab", "storage", "declarativeContent"],
+    
+    "permissions":["tabs","activeTab", "storage", "declarativeContent"],
     
    "browser_action":{
        "default_popup": "popup.html",
@@ -20,10 +19,10 @@
         },
         "default_title": "Truth Tortoise" 
    },
-    //creates an options page in brower extensions
+    
     "options_page": "options.html",
     
-    //matt shit
+    
     "content_scripts": [
       {
         "matches": [
@@ -32,9 +31,6 @@
         "js": ["content.js"],
         "run_at":    "document_start"
       }
-    ],"background": {
-      "scripts": ["background.js"],
-      "run_at":    "document_start"
-    }
+    ]
     
   }

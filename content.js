@@ -1,4 +1,4 @@
-
+"use strict";
  function getJSON() {
      alert("getJSON in content has been called")
     const pElements = document.getElementsByTagName("p")
@@ -15,12 +15,8 @@
     return toReturn
 }
 
-chrome.runtime.onMessage.addListener(function(request,sender,sendResponse)
-{
-    alert("request Content:" + request.greeting)
-    if( request.greeting == "getJ" )
-    {
-          sendResponse( {sent : getJSON() } );
-    }        
-    })
+chrome.runtime.onMessage.addListener(request => {
+    return {data :getJSON()};
+});
+
 

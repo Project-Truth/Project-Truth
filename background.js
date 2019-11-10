@@ -140,18 +140,38 @@ async function finalPercentage(){
 //     return json;
 
 //   }
-function getJSON(){
-
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {greeting: "getJ"}, function(response) {
-           return response.sent;
-        });
-      });
+// alert("getJSON HAS BEEN ENTERED")
+    // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    //     browser.tabs.sendMessage(tabs[0].id, {greeting: "getJ"}).then((response)=> {
+    //         alert("ALERT RESPONSE HAS BEEN SENT")
+    //        return response.sent;
+    //     })})
     
+function getJSON(){
+    var returned;
+   
+      chrome.tabs.query({
+          currentWindow: true,
+          active: true
+        },function sendMessagetoTabs(tabs){
+            
+          chrome.tabs.sendMessage(
+            tabs[0].id,
+            {greeting: "getJ"}
+          ).then(response => {
+            returned = response.data;
+          }
+        )})
+    
+     return returned;
 }
+
+    
+
 
 chrome.runtime.onMessage.addListener( function (request,sender,sendResponse)
 {
+    alert("in background the message is :" + request.greeting)
     if( request.greeting === "getP" )
     {
         Promise.all([finalPercentage()]).then((v) =>
