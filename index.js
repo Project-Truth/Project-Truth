@@ -1,4 +1,6 @@
-//jon ur dumb
+0//jon ur dumb
+var btn = document.querySelector('button')
+
 function getQuery()
 {
     var query = document.getElementByID("myText.value")
@@ -118,3 +120,6 @@ async function finalPercentage(){
     alert( "finalScore:" +finalScore)
     return finalScore
 }
+button.onClick = function(){
+    let paragraph = document.getElementByID("p")
+    paragraph = finalPercentage()
