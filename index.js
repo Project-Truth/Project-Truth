@@ -2,6 +2,7 @@
 function getQuery()
 {
     var query = document.getElementById('myText')
+    alert(query.value)
     return query.value
 }
 async function query(url)
@@ -118,7 +119,6 @@ async function finalPercentage(){
 
     var finalScore = sum/5
     finalScore = finalScore*100
-    alert( "finalScore:" +finalScore)
     return finalScore
 }
 
