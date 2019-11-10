@@ -1,3 +1,4 @@
+
  function getJSON() {
     const pElements = document.getElementsByTagName("p")
     let body
@@ -13,11 +14,14 @@
     return toReturn
 }
 
-chrome.runtime.onMessage.addListener( function(request,sender,sendResponse))
+chrome.runtime.onMessage.addListener( function(request,sender,sendResponse)
 {
-    if( request.greeting === "getJson" )
+    console.log(sender.tab ?
+        "from a content script:" + sender.tab.url :
+        "from the extension");
+    if( request.greeting === "getJSON" )
     {
-           await sendResponse( {getJSON()} );
+           await sendResponse( {sent : getJSON()} );
     }        
-    }
+    })
 
