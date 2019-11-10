@@ -72,7 +72,7 @@ function getPercent(orig, comp){
     return points/orig.length
 }}
 function convertHTMLtoJSON(input){
-    const pElements = input.getElementById('p')
+    const pElements = document.getElementById('p')
     let body
     let toReturn 
     for (e of pElements ){body+=e}
