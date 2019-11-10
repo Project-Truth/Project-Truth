@@ -16,19 +16,6 @@
 //   });   
 
  
-   function getJSON(){
-       alert("getJason has been called to ")
-      let json;
-        document.addEventListener('DOMContentLoaded',
-     function pageOpen(){
-        chrome.runtime.sendMessage({greeting: "getJSON"}, function(response){
-         json = response.sent})
-         alert("JSON FROM BACKGROUND:" +json)
-    }
-    ,false)
-    return json;
-
-  }
 
 
    
@@ -139,6 +126,25 @@ async function finalPercentage(){
     finalScore = finalScore*100
     alert( "finalScore:" +finalScore)
     return finalScore
+}
+//    function getJSON(){
+//        let json = "";
+//        alert("getJason has been called to ")
+//              chrome.runtime.sendMessage({greeting: "getJ"}, function(response){
+//           json = response.sent},false)
+//          alert("JSON FROM BACKGROUND:" + json)
+    
+//     return json;
+
+//   }
+function getJSON(){
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {greeting: "getJ"}, function(response) {
+          return response.sent;
+        });
+      });
+    
 }
 
 chrome.runtime.onMessage.addListener( function (request,sender,sendResponse)
