@@ -14,6 +14,16 @@
     });
   });   
 
+ var json;
+
+    document.addEventListener('DOMContentLoaded',
+    function onclick() {
+        chrome.runtime.sendMessage({greeting: "getJson"}, function(returned){
+         json = returned})
+    }
+    ,false)
+
+
 
    
   async function findRelevantArticles(){//title can be switched with keywords 
@@ -124,5 +134,10 @@ async function finalPercentage(){
     return finalScore
 }
 
-
-}    
+chrome.runtime.onMessage.addListener( function(request,sender,sendResponse))
+{
+    if( request.greeting === "getPercentage" )
+    {
+            sendResponse( {finalPercent()} );
+    }        
+    }

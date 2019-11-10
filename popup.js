@@ -1,11 +1,9 @@
-alert("Popup running")
+//alert("Popup running")
 document.addEventListener('DOMContentLoaded',function (){
 document.querySelector('button').addEventListener('click', onclick, false)
 function onclick() {
-
-alert("button has been clicked")
-
-
+    chrome.runtime.sendMessage({greeting: "getPercentage"}, function(returned){
+     alert(returned) })
 }
 if (amtSkipped>0){
     var secondPage = nextPage()
