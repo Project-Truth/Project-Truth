@@ -57,7 +57,7 @@ function compare(body2){
                 orig.splice(i,1)
             }
         }
-    }
+    }    
     for (let i = 0; i <comp.length; i++){
         for (let j = 0; j<i; j++){
             if(comp[i] == comp[j]){
@@ -124,7 +124,7 @@ async function finalPercentage(){
         let tempSkipJSON = JSON.parse(convertHTMLtoJSON(await fetch(secondPage(amtSkipped-1))))
         sum+= compare(tempSkipJSON['body'])
         usedArticles += (secondPage(amtSkipped)
-        amtSkipped--
+        amtSkipped -= 1
     }
     var finalScore = sum/5
     finalScore = finalScore*100
